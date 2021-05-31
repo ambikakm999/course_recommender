@@ -1,0 +1,26 @@
+<!-- templates/home.html -->
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+<p>
+    <a href="{% url 'editprofile' %}">Edit Profile</a>
+</p>
+<p>
+    <a href="{% url 'ratecourse' %}">Rate Courses</a>
+</p>
+
+   <p>
+       <a href="{% url 'logout' %}">Log Out</a>
+   </p>
+{% else %}
+  <p>
+      You are not logged in!<a href="{% url 'login' %}">Log In</a>
+  </p>
+<p>
+    New User?<a href="{% url 'register' %}">Sign Up</a>
+</p>
+
+{% endif %}
+{% endblock %}
